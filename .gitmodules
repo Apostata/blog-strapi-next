@@ -1,0 +1,6 @@
+[submodule "blog-next"]
+	path = blog-next
+	url = https://github.com/Apostata/blog-next.git
+[submodule "blog-strapi"]
+	path = blog-strapi
+	url = https://github.com/Apostata/blog-strapi.git
