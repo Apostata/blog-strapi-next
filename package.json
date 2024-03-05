@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "scripts": {
+    "install:all": "npm run install:strapi && npm run install:next",
+    "install:strapi": "cd blog-strapi && npm install",
+    "postinstall:strapi": "cd blog-strapi/src/plugins/custom-home && npm install",
+    "install:next": "cd blog-next && npm install",
+    "postinstall:all": "cd blog-strapi/src/plugins/custom-home && npm run build",
+    "build:all": "npm run build:strapi && npm run build:next",
+    "build:strapi": "cd blog-strapi && npm run build",
+    "prebuild:strapi": "cd blog-strapi/src/plugins/custom-home && npm run build",
+    "build:next": "cd blog-next && npm run build",
+    "dev": "concurrently --names \"next,strapi\"  \"npm run dev:next\" \"npm run dev:strapi\"",
+    "dev:next": "cd ./blog-next && npm run dev",
+    "dev:strapi": "cd ./blog-strapi && npm run develop",
+    "uninstall:all": "npm run uninstall:strapi && npm run uninstall:next",
+    "uninstall:strapi": "cd blog-strapi && rm -rf node_modules && rm package-lock.json",
+    "postuninstall:strapi": "cd blog-strapi/src/plugins/custom-home && rm -rf node_modules && rm package-lock.json",
+    "uninstall:next": "cd blog-next && rm -rf node_modules && rm package-lock.json",
+    "start": "concurrently --names \"next,strapi\"  \"npm run start:next\" \"npm run start:strapi\"",
+    "start:next": "cd ./blog-next && npm run start",
+    "start:strapi": "cd ./blog-strapi && npm run start"
+  }
+}
